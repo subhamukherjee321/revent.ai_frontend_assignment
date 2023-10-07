@@ -1,0 +1,47 @@
+/* Base styles for input and button */
+.responsive-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.input-field {
+    padding: 0.56rem 4rem;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    border-radius: 0.2rem;
+    font-weight: bold;
+    width: 100%;
+  }
+  
+  .search-button {
+    padding: 0.5rem 1rem;
+    background-color: #F7C20A;
+    border: none;
+    border-radius: 0.2rem;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .search-button:hover {
+    background-color: #808080;
+  }
+  
+  /* Responsive styles */
+  @media screen and (max-width: 768px) {
+    /* Adjust input field padding and font size for smaller screens */
+    .input-field {
+      padding: 0.5rem 2rem;
+      font-size: 0.9rem;
+    }
+  
+    /* Adjust button padding and font size for smaller screens */
+    .search-button {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.9rem;
+    }
+  }
+  
