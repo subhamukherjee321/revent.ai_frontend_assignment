@@ -1,23 +1,17 @@
-import React, { useState } from "react";
-import PrimaryBtn from "./PrimaryBtn";
+import React from "react";
+import { useProduct } from "../Store/Home";
 
 function SearchBar() {
-  const [inputValue, setInputValue] = useState("");
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-  };
+  const {search, setSearch} = useProduct(state => state);
 
   return (
-    <form onSubmit={submitHandler} className="responsive-form">
-      <input
-        type="text"
-        placeholder="Search any product"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        className="input-field"
-      />
-    </form>
+    <input
+      type="text"
+      placeholder="Search any product"
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+      className="input-field"
+    />
   );
 }
 

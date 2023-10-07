@@ -1,26 +1,53 @@
-import { Box, Flex, Grid, Heading } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
-import Filters from "../Components/Filters";
-import SortBy from "../Components/SortBy";
+import { Box, Flex, Grid, Heading, useToast } from "@chakra-ui/react";
 import axios from "axios";
-import SliderCard from "../Components/SliderCard";
-import SearchBar from "../Components/SearchBar";
+import React, { useEffect } from "react";
+import Filters from "../Components/Filters";
+import Loading from "../Components/Loading";
 import Pagination from "../Components/Pagination";
+import SearchBar from "../Components/SearchBar";
+import SliderCard from "../Components/SliderCard";
+import SortBy from "../Components/SortBy";
 import { useProduct } from "../Store/Home";
 
 const AllProducts = () => {
-  const { products, setProducts, page } = useProduct((state) => state);
+  const {
+    products,
+    setProducts,
+    page,
+    filters,
+    minPriceRange,
+    maxPriceRange,
+    search,
+    sort,
+    loading,
+    setLoading,
+  } = useProduct((state) => state);
+  const toast = useToast();
+  const { menClothing, womenClothing, electronics, jewelery } = filters;
 
   const getAllProducts = async (page = 1) => {
-    let data = await axios.get(
-      `http://localhost:8080/products?_page=${page}&_limit=8`
-    );
-    setProducts(data.data);
+    setLoading(true);
+    try {
+      const res = await axios.get(
+        `http://localhost:8080/products?_page=${page}&_limit=8`
+      );
+      setProducts(res.data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      toast({
+        title: "Network Error",
+        status: "failed",
+        duration: 9000,
+        isClosable: true,
+      });
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
     getAllProducts(page);
-  }, [page]);
+  }, [page, setProducts]);
 
   return (
     <Box>
@@ -39,23 +66,27 @@ const AllProducts = () => {
       </Flex>
 
       {/* All Products Listing */}
-      <Grid
-        my={["1.5rem", "2rem", "2.4rem"]}
-        px={["1rem", "1.5rem", "5rem"]}
-        templateColumns={{
-          base: "repeat(1, 1fr)",
-          sm: "repeat(1, 1fr)",
-          md: "repeat(2, 1fr)",
-          lg: "repeat(3, 1fr)",
-          xl: "repeat(4, 1fr)",
-          "2xl": "repeat(4, 1fr)",
-        }}
-        gap={["1rem", "1rem", "2rem 0.5rem"]}
-      >
-        {products?.map((item) => (
-          <SliderCard key={item.id} item={item} />
-        ))}
-      </Grid>
+      {loading ? (
+        <Loading />
+      ) : (
+        <Grid
+          my={["1.5rem", "2rem", "2.4rem"]}
+          px={["1rem", "1.5rem", "5rem"]}
+          templateColumns={{
+            base: "repeat(1, 1fr)",
+            sm: "repeat(1, 1fr)",
+            md: "repeat(2, 1fr)",
+            lg: "repeat(3, 1fr)",
+            xl: "repeat(4, 1fr)",
+            "2xl": "repeat(4, 1fr)",
+          }}
+          gap={["1rem", "1rem", "2rem 0.5rem"]}
+        >
+          {products?.map((item) => (
+            <SliderCard key={item.id} item={item} />
+          ))}
+        </Grid>
+      )}
 
       {/* Pagianation */}
       <Pagination />
