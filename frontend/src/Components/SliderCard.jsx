@@ -5,8 +5,8 @@ import { FaHeart } from "react-icons/fa";
 import { useColorContext } from "../Context/ColorContext";
 
 function SliderCard({ item }) {
-  console.log("item: ", item);
   const { colorStatus, colors } = useColorContext();
+  const [toggleWish, setToggleWish] = useState(false);
 
   return (
     <Box
@@ -55,7 +55,11 @@ function SliderCard({ item }) {
         </Flex>
 
         <Box position={"absolute"} cursor={"pointer"} right={3} top={4}>
-          <FaHeart color={"white"} fontWeight={"bold"} fontSize={"1.5rem"} />
+          {!toggleWish ? (
+            <FaHeart color={"white"} fontWeight={"bold"} fontSize={"1.5rem"} onClick={() => setToggleWish(!toggleWish)} />
+          ) : (
+            <FaHeart color={"red"} fontWeight={"bold"} fontSize={"1.5rem"} onClick={() => setToggleWish(!toggleWish)} />
+          )}
         </Box>
       </Flex>
       <Box

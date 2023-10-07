@@ -1,10 +1,8 @@
-import { Box, Button } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { useColorContext } from "../Context/ColorContext";
+import PrimaryBtn from "./PrimaryBtn";
 
 const SearchBar = () => {
   const [inputValue, setInputValue] = useState("");
-  const { colorStatus } = useColorContext();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -35,18 +33,18 @@ const SearchBar = () => {
           fontWeight: "bold"
         }}
       />
-      <Button
-        _hover={{ bg: colorStatus ? "grey" : "black", color: "#F7C20A" }}
-        _active={{ bg: "#4A5568", color: "white" }}
-        borderRadius={"0.3rem"}
-        type="submit"
-        bg={"#F7C20A"}
-        color={"black"}
-      >
-        Search
-      </Button>
+      <PrimaryBtn text={"Search"} />
     </form>
   );
 };
 
 export default SearchBar;
+
+
+/*
+Before Start Do create new branch
+Is Responsive part starting
+Then Responsive Product Page Branch
+For Functionality Give name of functionality
+For Single Product Page give name single product page
+*/
