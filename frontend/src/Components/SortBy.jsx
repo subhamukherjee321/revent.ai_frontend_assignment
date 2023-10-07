@@ -1,11 +1,13 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Select, Text, useMediaQuery } from "@chakra-ui/react";
 import React from "react";
 
 const SortBy = () => {
+  const [isTabletOrSmaller] = useMediaQuery("(max-width: 768px)");
+
   return (
-    <Flex align={"center"} gap={1}>
-      <Text fontWeight={500}>Sort By :</Text>
-      <select
+    <Flex align="center" gap={1}>
+      {!isTabletOrSmaller && <Text w={"40%"} fontWeight={500}>Sort By :</Text>}
+      <Select
         style={{ fontWeight: "bold", p: "0.5rem" }}
         placeholder="Select option"
       >
@@ -13,7 +15,7 @@ const SortBy = () => {
         <option value="option2">Alphabetically, Z-A</option>
         <option value="option3">Price, low to high</option>
         <option value="option3">Price, high to low</option>
-      </select>
+      </Select>
     </Flex>
   );
 };

@@ -12,6 +12,7 @@ const PrimaryBtn = ({ text }) => {
       type="submit"
       bg={"#F7C20A"}
       color={"black"}
+      fontSize={["0.8rem", "1rem"]} // Adjust font size for different screen sizes
     >
       {text}
     </Button>
