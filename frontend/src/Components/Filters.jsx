@@ -6,7 +6,6 @@ import {
   DrawerBody,
   DrawerCloseButton,
   DrawerContent,
-  DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
   Flex,
@@ -21,15 +20,40 @@ import {
   useDisclosure,
   useMediaQuery,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BiFilter } from "react-icons/bi";
+import { useProduct } from "../Store/Home";
 
 const Filters = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
   const [min, setMin] = useState(0);
-  const [max, setMax] = useState(3000);
+  const [max, setMax] = useState(1000);
   const [isTabletOrSmaller] = useMediaQuery("(max-width: 768px)");
+  const [checkboxValues, setCheckboxValues] = useState({
+    menClothing: false,
+    womenClothing: false,
+    electronics: false,
+    jewelery: false,
+  });
+  const { setFilters, setMinPriceRange, setMaxPriceRange } = useProduct(
+    (state) => state
+  );
+
+  const handleCheckboxChange = (e) => {
+    const { name, checked } = e.target;
+
+    setCheckboxValues((prev) => ({
+      ...prev,
+      [name]: checked,
+    }));
+  };
+
+  useEffect(() => {
+    setFilters(checkboxValues);
+    setMinPriceRange(min);
+    setMaxPriceRange(max);
+  }, [checkboxValues, min, max]);
 
   return (
     <>
@@ -70,45 +94,31 @@ const Filters = () => {
               </ListItem>
               <UnorderedList listStyleType={"none"}>
                 <ListItem>
-                  <Checkbox>Wireless</Checkbox>
+                  <Checkbox name="menClothing" onChange={handleCheckboxChange}>
+                    Men's Clothing
+                  </Checkbox>
                 </ListItem>
                 <ListItem>
-                  <Checkbox>With Wired</Checkbox>
+                  <Checkbox
+                    name="womenClothing"
+                    onChange={handleCheckboxChange}
+                  >
+                    Women's Clothing
+                  </Checkbox>
                 </ListItem>
                 <ListItem>
-                  <Checkbox>Airpods</Checkbox>
+                  <Checkbox name="electronics" onChange={handleCheckboxChange}>
+                    Electronics
+                  </Checkbox>
                 </ListItem>
                 <ListItem>
-                  <Checkbox>Gaming</Checkbox>
+                  <Checkbox name="jewelery" onChange={handleCheckboxChange}>
+                    Jewelery
+                  </Checkbox>
                 </ListItem>
               </UnorderedList>
-            </UnorderedList>{" "}
+            </UnorderedList>
             <br />
-            <UnorderedList listStyleType={"none"}>
-              <ListItem fontSize={"1.1rem"} fontWeight={500}>
-                Brand
-              </ListItem>
-              <UnorderedList listStyleType={"none"}>
-                <ListItem>
-                  <Checkbox>Boat</Checkbox>
-                </ListItem>
-                <ListItem>
-                  <Checkbox>Realme</Checkbox>
-                </ListItem>
-                <ListItem>
-                  <Checkbox>Apple</Checkbox>
-                </ListItem>
-                <ListItem>
-                  <Checkbox>JBL</Checkbox>
-                </ListItem>
-                <ListItem>
-                  <Checkbox>Cosmic Byte</Checkbox>
-                </ListItem>
-                <ListItem>
-                  <Checkbox>Sony</Checkbox>
-                </ListItem>
-              </UnorderedList>
-            </UnorderedList>{" "}
             <br />
             <Heading fontSize={"1.1rem"} textAlign={"center"}>
               Price
@@ -133,7 +143,7 @@ const Filters = () => {
                   onChange={(val) => (setMin(val[0]), setMax(val[1]))}
                   aria-label={["min", "max"]}
                   defaultValue={[min, max]}
-                  max="3000"
+                  max="1000"
                 >
                   <RangeSliderTrack bg="red.400">
                     <RangeSliderFilledTrack />
@@ -144,13 +154,6 @@ const Filters = () => {
               </Box>
             </Box>
           </DrawerBody>
-
-          <DrawerFooter>
-            <Button variant="outline" mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            <Button colorScheme="blue">Save</Button>
-          </DrawerFooter>
         </DrawerContent>
       </Drawer>
     </>
