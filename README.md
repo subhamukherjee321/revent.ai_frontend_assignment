@@ -13,6 +13,7 @@ Welcome to the revent.ai_frontend_assignment This React-based assignmnet allows 
 - [Technologies Used](#technologies-used)
 - [Challenges Faced](#challenges-faced)
 - [Thought Process](#thought-process)
+- [Author] (#author)
 
 ## Demo
 
