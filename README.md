@@ -49,7 +49,10 @@ You can see a live demo of this component [here](https://example.com).
 6. Filter Search Price Range and Sort all can work together as well.
 
 ## Technologies Used
-- React.js, React-Router-Dom, CSS, Chakra UI
+- React.js
+- React-Router-Dom
+- CSS
+- Chakra UI
 
 ## Challenges Faced
 - During the development of this project, I encountered the following challenges:
