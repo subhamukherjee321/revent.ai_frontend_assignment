@@ -35,15 +35,18 @@ You can see a live demo of this component [here](https://example.com).
 2. Navigate to the frontend directory: `cd revent.ai_frontend_assignment/frontend`
 3. Install frontend dependencies: `npm install`
 
-## Usage
+### Running the Application
 1. Start the frontend development server: `npm start`
 2. Start the JSON server: `npm run server`
-3. Open your web browser and go to the provided localhost port to use the chat app.
-4. You can see limited products then at bottom you can see pagination with the previous and next buttons to see more products.
-5. For Sorting at the right top corner you can see the Sort By option you can sort by Price from low to high and high to low as well as Rating low to high and high to low
-6. For Searching you can see the search bar with a search button where you can search by category, title, or price.
-7. For Filtering you can see at the top left corner there is a Filter option click that filter it will open filter options for you with multiple filters and also have a price range for filtering.
-8. Filter Search Price Range and Sort all can work together as well.
+3. Open your web browser and navigate to http://localhost:3000. You should now see the application running on your computer.
+
+## Usage
+1. Open your web browser and go to the provided localhost port to use the chat app.
+2. You can see limited products then at bottom you can see pagination with the previous and next buttons to see more products.
+3. For Sorting at the right top corner you can see the Sort By option you can sort by Price from low to high and high to low as well as Rating low to high and high to low
+4. For Searching you can see the search bar with a search button where you can search by category, title, or price.
+5. For Filtering you can see at the top left corner there is a Filter option click that filter it will open filter options for you with multiple filters and also have a price range for filtering.
+6. Filter Search Price Range and Sort all can work together as well.
 
 ## Technologies Used
 - React.js, React-Router-Dom, CSS, Chakra UI
