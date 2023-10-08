@@ -7,8 +7,8 @@ import Pagination from "../Components/Pagination";
 import SearchBar from "../Components/SearchBar";
 import SliderCard from "../Components/SliderCard";
 import SortBy from "../Components/SortBy";
-import { useProduct } from "../Store/Home";
-import productsApi from "../API/products";
+import { useProduct } from "../Store/productsStore";
+import productsApi from "../API/productsAPI";
 
 const AllProducts = () => {
   const {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useProduct } from "../Store/Home";
+import { useProduct } from "../Store/productsStore";
 import { Button, FormControl, Input } from "@chakra-ui/react";
 
 function SearchBar() {

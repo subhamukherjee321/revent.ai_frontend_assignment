@@ -1,6 +1,6 @@
 import { Flex, Select, Text, useMediaQuery } from "@chakra-ui/react";
 import React from "react";
-import { useProduct } from "../Store/Home";
+import { useProduct } from "../Store/productsStore";
 
 const SortBy = () => {
   const [isTabletOrSmaller] = useMediaQuery("(max-width: 768px)");

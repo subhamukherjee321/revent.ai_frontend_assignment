@@ -22,7 +22,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { BiFilter } from "react-icons/bi";
-import { useProduct } from "../Store/Home";
+import { useProduct } from "../Store/productsStore";
 
 const Filters = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();

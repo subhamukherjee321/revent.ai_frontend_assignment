@@ -55,7 +55,7 @@ export default class productsApi {
     }
 
     const res = await axios.get(
-      `http://localhost:8080/products?_page=${page}&_limit=8${filterURL}${priceURL}${sortURL}${searchURL}`
+      `https://mock-server-movies-lxf4adyx8-subhamukherjee321.vercel.app/products?_page=${page}&_limit=8${filterURL}${priceURL}${sortURL}${searchURL}`
     );
 
     return res.data;

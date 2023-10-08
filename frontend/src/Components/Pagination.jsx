@@ -1,6 +1,6 @@
 import { Button, Flex } from "@chakra-ui/react";
 import React from "react";
-import { useProduct } from "../Store/Home";
+import { useProduct } from "../Store/productsStore";
 
 const Pagination = () => {
   const { page, setPage } = useProduct((state) => state);
