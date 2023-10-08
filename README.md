@@ -53,6 +53,8 @@ You can see a live demo of this component [here](https://example.com).
 - React-Router-Dom
 - CSS
 - Chakra UI
+- Context API
+- Zustand
 
 ## Challenges Faced
 - During the development of this project, I encountered the following challenges:
