@@ -16,7 +16,7 @@ Welcome to the revent.ai_frontend_assignment This React-based assignmnet allows 
 
 ## Demo
 
-You can see a live demo of this component [here](https://example.com).
+You can see a live demo of this component [here](https://revent-ai-frontend-assignment-n38x.vercel.app/).
 
 ## Features
 
@@ -37,8 +37,9 @@ You can see a live demo of this component [here](https://example.com).
 
 ### Running the Application
 1. Start the frontend development server: `npm start`
-2. Start the JSON server: `npm run server`
-3. Open your web browser and navigate to http://localhost:3000. You should now see the application running on your computer.
+2. Start the JSON server: `npm run server` to start the JSON data but it's not needed I did deploy the JSON Server
+3. Link for Deployed Mock Server : `https://revent-ai-frontend-assignment-n38x.vercel.app/`
+4. Open your web browser and navigate to http://localhost:3000. You should now see the application running on your computer.
 
 ## Usage
 1. Open your web browser and go to the provided localhost port to use the chat app.
