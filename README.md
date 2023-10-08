@@ -31,7 +31,7 @@ You can see a live demo of this component [here](https://revent-ai-frontend-assi
 
 ### Installation
 
-1. Clone the repository: `https://github.com/subhamukherjee321/revent.ai_frontend_assignment.git`
+1. Clone the repository: https://github.com/subhamukherjee321/revent.ai_frontend_assignment.git
 2. Navigate to the frontend directory: `cd revent.ai_frontend_assignment/frontend`
 3. Install frontend dependencies: `npm install`
 
