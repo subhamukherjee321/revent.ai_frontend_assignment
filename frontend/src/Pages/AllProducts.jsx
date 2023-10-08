@@ -64,7 +64,7 @@ const AllProducts = () => {
     minPriceRange,
     maxPriceRange,
     sort,
-    search
+    search,
   ]);
 
   return (
@@ -72,15 +72,33 @@ const AllProducts = () => {
       <Heading mt={["1rem", "1.5rem", "2rem"]} size={"lg"} textAlign={"center"}>
         All Products
       </Heading>
-      <Flex mx={"5rem"} justify={"space-between"} mt={"10"}>
+      <Flex
+        mx={{ base: "1.5rem", md: "5rem" }}
+        flexDir={{ base: "column", md: "row" }}
+        justify={"space-between"}
+        mt={"10"}
+      >
         {/* Filters */}
-        <Filters />
+        <Box display={{ base: "none", md: "block" }}>
+          <Filters />
+        </Box>
 
         {/* Search Bar */}
         <SearchBar />
 
         {/* Sorting */}
-        <SortBy />
+        <Box display={{ base: "none", md: "block" }}>
+          <SortBy />
+        </Box>
+        <Box
+          display={{ base: "flex", md: "none" }}
+          alignItems={"center"}
+          justifyContent={"space-between"}
+          mt={"10px"}
+        >
+          <Filters />
+          <SortBy />
+        </Box>
       </Flex>
 
       {/* All Products Listing */}

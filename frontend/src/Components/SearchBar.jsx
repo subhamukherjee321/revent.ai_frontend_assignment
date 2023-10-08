@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useProduct } from "../Store/Home";
+import { Button, FormControl, Input } from "@chakra-ui/react";
 
 function SearchBar() {
   const [inputValue, setInputValue] = useState("");
@@ -24,17 +25,26 @@ function SearchBar() {
   console.log(inputValue);
 
   return (
-    <form onSubmit={submitHandler} className="responsive-form">
-      <input
-        type="text"
-        placeholder="Search any product"
-        onChange={(e) => setInputValue(e.target.value)}
-        value={inputValue}
-        className="input-field"
-      />
-      <button className="search-button" type="submit">
-        Search
-      </button>
+    <form onSubmit={submitHandler}>
+      <FormControl display="flex" alignItems="center">
+        <Input
+          type="text"
+          placeholder="Search any product"
+          onChange={(e) => setInputValue(e.target.value)}
+          value={inputValue}
+          _focus={{ borderColor: "blue.500", boxShadow: "none" }}
+        />
+        <Button
+          type="submit"
+          bg="blue.500"
+          color="white"
+          _hover={{ bg: "blue.600" }}
+          _active={{ bg: "blue.700" }}
+          ml={2}
+        >
+          Search
+        </Button>
+      </FormControl>
     </form>
   );
 }
