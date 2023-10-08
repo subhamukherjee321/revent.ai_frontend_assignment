@@ -36,9 +36,9 @@ const Filters = () => {
     electronics: false,
     jewelery: false,
   });
-  const { setFilters, setMinPriceRange, setMaxPriceRange } = useProduct(
-    (state) => state
-  );
+  const { filters, setFilters, setMinPriceRange, setMaxPriceRange } =
+    useProduct((state) => state);
+  const { menClothing, womenClothing, electronics, jewelery } = filters;
 
   const handleCheckboxChange = (e) => {
     const { name, checked } = e.target;
@@ -94,7 +94,12 @@ const Filters = () => {
               </ListItem>
               <UnorderedList listStyleType={"none"}>
                 <ListItem>
-                  <Checkbox name="menClothing" onChange={handleCheckboxChange}>
+                  <Checkbox
+                    name="menClothing"
+                    onChange={handleCheckboxChange}
+                    value={menClothing}
+                    isChecked={menClothing}
+                  >
                     Men's Clothing
                   </Checkbox>
                 </ListItem>
@@ -102,17 +107,29 @@ const Filters = () => {
                   <Checkbox
                     name="womenClothing"
                     onChange={handleCheckboxChange}
+                    value={womenClothing}
+                    isChecked={womenClothing}
                   >
                     Women's Clothing
                   </Checkbox>
                 </ListItem>
                 <ListItem>
-                  <Checkbox name="electronics" onChange={handleCheckboxChange}>
+                  <Checkbox
+                    name="electronics"
+                    onChange={handleCheckboxChange}
+                    value={electronics}
+                    isChecked={electronics}
+                  >
                     Electronics
                   </Checkbox>
                 </ListItem>
                 <ListItem>
-                  <Checkbox name="jewelery" onChange={handleCheckboxChange}>
+                  <Checkbox
+                    name="jewelery"
+                    onChange={handleCheckboxChange}
+                    value={jewelery}
+                    isChecked={jewelery}
+                  >
                     Jewelery
                   </Checkbox>
                 </ListItem>

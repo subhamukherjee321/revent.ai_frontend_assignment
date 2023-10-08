@@ -8,6 +8,7 @@ import SearchBar from "../Components/SearchBar";
 import SliderCard from "../Components/SliderCard";
 import SortBy from "../Components/SortBy";
 import { useProduct } from "../Store/Home";
+import productsApi from "../API/products";
 
 const AllProducts = () => {
   const {
@@ -25,29 +26,46 @@ const AllProducts = () => {
   const toast = useToast();
   const { menClothing, womenClothing, electronics, jewelery } = filters;
 
-  const getAllProducts = async (page = 1) => {
-    setLoading(true);
-    try {
-      const res = await axios.get(
-        `http://localhost:8080/products?_page=${page}&_limit=8`
-      );
-      setProducts(res.data);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-      toast({
-        title: "Network Error",
-        status: "failed",
-        duration: 9000,
-        isClosable: true,
-      });
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
-    getAllProducts(page);
-  }, [page, setProducts]);
+    const getData = async () => {
+      setLoading(true);
+      try {
+        const res = await productsApi.getProduct(
+          page,
+          filters,
+          minPriceRange,
+          maxPriceRange,
+          search,
+          sort
+        );
+
+        setProducts(res);
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+        console.log(error);
+        toast({
+          title: "Network Error",
+          status: "failed",
+          duration: 9000,
+          isClosable: true,
+        });
+      }
+    };
+
+    getData();
+  }, [
+    page,
+    setProducts,
+    menClothing,
+    womenClothing,
+    electronics,
+    jewelery,
+    minPriceRange,
+    maxPriceRange,
+    sort,
+    search
+  ]);
 
   return (
     <Box>
