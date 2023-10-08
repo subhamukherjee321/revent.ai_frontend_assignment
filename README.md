@@ -38,7 +38,7 @@ You can see a live demo of this component [here](https://revent-ai-frontend-assi
 ### Running the Application
 1. Start the frontend development server: `npm start`
 2. Start the JSON server: `npm run server` to start the JSON data but it's not needed I did deploy the JSON Server
-3. Link for Deployed Mock Server : `https://revent-ai-frontend-assignment-n38x.vercel.app/`
+3. Link for Deployed Mock Server: https://mock-server-movies-lxf4adyx8-subhamukherjee321.vercel.app/products
 4. Open your web browser and navigate to http://localhost:3000. You should now see the application running on your computer.
 
 ## Usage
